@@ -80,7 +80,7 @@ defaults write com.apple.dock mru-spaces -bool false
 # Prevent Photos from opening when media is plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-# Disable apps' go-to-fullscreen animation
+# Increase go-to-fullscreen animation speed
 defaults write -g NSWindowResizeTime -float 0.001
 
 # Disable opening and closing window animations
@@ -96,7 +96,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Finder: show hidden files by default
-#defaults write com.apple.Finder AppleShowAllFiles -bool true
+defaults write com.apple.Finder AppleShowAllFiles -bool true
 
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -116,6 +116,9 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
+# Avoid creating .DS_Store files on USB volumes
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -124,6 +127,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+# Set Sidebar Icon Size
+defaults write -g NSTableViewDefaultSizeMode -int 2
 
 # Show item info below icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
@@ -138,8 +144,8 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
 
 # Increase the size of icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 72" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 72" ~/Library/Preferences/com.apple.finder.plist
 
 # Use list view in all Finder windows by default
 # Flwv ▸ Cover Flow View
@@ -230,6 +236,14 @@ git config --global user.email "jav094@gmail.com"
 
 
 ###############################################################################
+# iTunes 
+###############################################################################
+# Stop Responding to Key Presses
+# Doesn't work while System Integrity Protection is on'
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+
+
+###############################################################################
 # Homebrew 
 ###############################################################################
 echo "Setting up Homebrew apps"
@@ -237,14 +251,41 @@ echo "Setting up Homebrew apps"
 # Install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# Install your apps from a predefined Brewfile
+brew bundle
+
+# Clean up after yourself
+brew cleanup
+
+
+
+
+###############################################################################
+# App Store apps 
+###############################################################################
+echo "Setting up App Store apps"
+
 # Install mac app store command line
 brew install mas
 
 # Sign in
 mas signin jav094@gmail.com
 
-# Install your apps from a predefined Brewfile
-brew bundle
+# Download & install apps:
+# Keynote
+mas install 409183694
 
-# Clean up after yourself
-brew cleanup
+# Numbers
+mas install 409203825
+
+# Pages
+mas install 409201541
+
+# Simplenote
+mas install 692867256
+
+# SiteSucker
+mas install 442168834
+
+# Wunderlist: To-Do List & Tasks
+mas install 410628904

@@ -23,17 +23,12 @@ cask 'omnifocus'
 cask 'opera'
 cask 'paparazzi'
 cask 'parallels-desktop'
-cask 'sitesucker'
 cask 'sketch'
 # cask 'skyfonts'
 cask 'spectacle'
 cask 'spotify'
-cask 'the-unarchiver'
 cask 'tableau-public'
-cask 'trasmit'
+cask 'the-unarchiver'
+cask 'transmit'
 cask 'vlc'
 cask 'visual-studio-code'
-
-mas 'Numbers', id: 409203825
-mas 'Pages', id: 409201541
-mas 'Simplenote', id: 692867256 
