@@ -31,16 +31,29 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+# Disable Key Repeat
+defaults write -g ApplePressAndHoldEnabled -bool true
 
 
 
 ###############################################################################
-# Screen                                                                      #
+# Audio                                                                      
+###############################################################################
+echo "Setting up audio"
+
+# Disable boot chime
+sudo nvram SystemAudioVolume=" "
+
+
+
+
+###############################################################################
+# Screen                                                                      
 ###############################################################################
 echo "Setting up screen"
 
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "$HOME/Downloads"
+# Save screenshots to Downloads
+defaults write com.apple.screencapture location -string "$HOME/Downloads/screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -55,7 +68,16 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 
 ###############################################################################
-# Finder                                                                      #
+# Notification Center                                                         
+###############################################################################
+echo "Disabling Notification Center"
+
+# Disable Notification Center
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && \
+killall -9 NotificationCenter
+
+###############################################################################
+# Finder                                                                      
 ###############################################################################
 echo "Setting up Finder"
 
@@ -168,7 +190,7 @@ killall Finder
 
 
 ###############################################################################
-# Dock & hot corners                                                          #
+# Dock & hot corners                                                          
 ###############################################################################
 echo "Setting up Dock"
 
