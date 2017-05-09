@@ -219,6 +219,17 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 
 ###############################################################################
+# Git 
+###############################################################################
+echo "Setting up git"
+
+git config --global user.name "Juan Valera"
+git config --global user.email "jav094@gmail.com"
+
+
+
+
+###############################################################################
 # Homebrew 
 ###############################################################################
 echo "Setting up Homebrew apps"
