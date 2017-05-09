@@ -53,7 +53,7 @@ sudo nvram SystemAudioVolume=" "
 echo "Setting up screen"
 
 # Save screenshots to Downloads
-defaults write com.apple.screencapture location -string "$HOME/Downloads/screenshots"
+defaults write com.apple.screencapture location -string "$HOME/Dropbox/MyDocs/screenshots/"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -70,11 +70,12 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 ###############################################################################
 # Notification Center                                                         
 ###############################################################################
-echo "Disabling Notification Center"
+# echo "Disabling Notification Center"
 
 # Disable Notification Center
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && \
-killall -9 NotificationCenter
+# Can't disable while SIP is enabled
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && \
+# killall -9 NotificationCenter
 
 ###############################################################################
 # Finder                                                                      
