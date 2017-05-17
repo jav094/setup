@@ -5,6 +5,9 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `osx.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+
+
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 
 ###############################################################################
@@ -33,6 +36,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Disable Key Repeat
 defaults write -g ApplePressAndHoldEnabled -bool true
+
 
 
 
@@ -76,6 +80,9 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # Can't disable while SIP is enabled
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && \
 # killall -9 NotificationCenter
+
+
+
 
 ###############################################################################
 # Finder                                                                      
@@ -190,6 +197,8 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 killall Finder
 
 
+
+
 ###############################################################################
 # Dock & hot corners                                                          
 ###############################################################################
@@ -228,6 +237,8 @@ ln -s /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Appli
 
 # restarts Dock
 killall Dock
+
+
 
 
 ###############################################################################
@@ -274,6 +285,9 @@ xcode-select --install
 # Stop Responding to Key Presses
 # Doesn't work while System Integrity Protection is on'
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+
+
+
 
 
 ###############################################################################
