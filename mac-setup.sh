@@ -1,8 +1,8 @@
 
-# Ask for the administrator password upfront
+# Ask for the administrator password up front
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `osx.sh` has finished
+# Keep-alive; update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
@@ -177,12 +177,12 @@ defaults write -g NSTableViewDefaultSizeMode -int 2
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 72" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 72" ~/Library/Preferences/com.apple.finder.plist
 
-# Use list view in all Finder windows by default
+# Use icon view in all Finder windows by default
 # Flwv ▸ Cover Flow View
 # Nlsv ▸ List View
 # clmv ▸ Column View
 # icnv ▸ Icon View
-# defaults write com.apple.Finder FXPreferredViewStyle -string "icnv"
+defaults write com.apple.Finder FXPreferredViewStyle -string "icnv"
 
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
@@ -232,9 +232,6 @@ defaults write com.apple.dock autohide -bool true
 # Reset Launchpad
 find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 
-# Add iOS Simulator to Launchpad
-ln -s /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.app
-
 # restarts Dock
 killall Dock
 
@@ -270,7 +267,7 @@ git config --global user.email "jav094@gmail.com"
 
 
 ###############################################################################
-# iTunes 
+# Xcode 
 ###############################################################################
 echo "Setting up Xcode"
 
@@ -334,7 +331,7 @@ mas install 692867256
 # SiteSucker
 mas install 442168834
 
-# Wunderlist: To-Do List & Tasks
+# Wunderlist
 mas install 410628904
 
 # Xcode
