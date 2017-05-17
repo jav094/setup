@@ -261,6 +261,16 @@ git config --global user.email "jav094@gmail.com"
 ###############################################################################
 # iTunes 
 ###############################################################################
+echo "Setting up Xcode"
+
+xcode-select --install
+
+
+
+
+###############################################################################
+# iTunes 
+###############################################################################
 # Stop Responding to Key Presses
 # Doesn't work while System Integrity Protection is on'
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
@@ -292,7 +302,7 @@ echo "Setting up App Store apps"
 brew install mas
 
 # Sign in
-mas signin jav094@gmail.com
+mas signin --dialog jav094@gmail.com
 
 # Download & install apps:
 # Keynote
@@ -312,3 +322,6 @@ mas install 442168834
 
 # Wunderlist: To-Do List & Tasks
 mas install 410628904
+
+# Xcode
+mas install 497799835
