@@ -18,7 +18,12 @@ Sets a macOS machine up for a comfy dev environment
 ## how
 > sh mac-setup.sh
 
-## afterwards, remember to:
+## next, remember to:
 * open apps that require further setup, like Wavebox & Spotify
 * clone dotfiles repo into your user directory
 * set up SSH keys
+* finish installing some Casks (they need to run proprietary installers deposited in usr/local/Caskroom)
+* install apps that don't have Casks:
+    * Sketch - CraftManager
+    * Sketch - PluginManager
+    * others
