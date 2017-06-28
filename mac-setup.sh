@@ -43,10 +43,11 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 ###############################################################################
 # Audio                                                                      
 ###############################################################################
-echo "Setting up audio"
+# echo "Setting up audio"
 
 # Disable boot chime
-sudo nvram SystemAudioVolume=" "
+# This doesn't seem to work?
+# sudo nvram SystemAudioVolume=" "
 
 
 
