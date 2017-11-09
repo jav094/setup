@@ -58,7 +58,7 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 echo "Setting up screen"
 
 # Save screenshots to Downloads
-defaults write com.apple.screencapture location -string "$HOME/Dropbox/MyDocs/screenshots/"
+defaults write com.apple.screencapture location -string "'$HOME/Dropbox (Coastal)/MyDocs/screenshots/''"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
