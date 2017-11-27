@@ -2,7 +2,8 @@
 Sets a macOS machine up for a comfy dev environment
 
 ## what this configures
-* Trackpad, keyboard, input
+* Trackpad, keyboard, & inputs
+* Bluetooth audio
 * Screenshot prefs
 * Finder & Dock
 * Terminal
