@@ -232,8 +232,8 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Remove the auto-hiding Dock delay
 defaults write com.apple.Dock autohide-delay -float 0
 
-# Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
+# Shorten the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 1.0
 
 # Enable the 2D Dock
 defaults write com.apple.dock no-glass -bool true
