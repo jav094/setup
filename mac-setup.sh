@@ -343,8 +343,5 @@ mas install 692867256
 # SiteSucker
 mas install 442168834
 
-# Wunderlist
-mas install 410628904
-
 # Xcode
 mas install 497799835
