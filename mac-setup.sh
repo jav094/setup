@@ -18,15 +18,6 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map bottom right corner to right-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Swipe between pages with two fingers
-defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
-
 # Disable “natural” scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
@@ -56,10 +47,6 @@ defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
 sudo killall bluetoothaudiod
 sudo killall coreaudiod
 
-# Disable boot chime
-# This doesn't seem to work?
-# sudo nvram SystemAudioVolume=" "
-
 
 
 
@@ -79,19 +66,6 @@ defaults write com.apple.screencapture disable-shadow -bool true
 
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
-
-
-
-
-###############################################################################
-# Notification Center                                                         
-###############################################################################
-# echo "Disabling Notification Center"
-
-# Disable Notification Center
-# Can't disable while SIP is enabled
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && \
-# killall -9 NotificationCenter
 
 
 
