@@ -2,6 +2,7 @@ tap 'caskroom/cask'
 
 brew 'git'
 brew 'npm'
+brew 'yarn'
 
 cask '1password'
 cask 'adobe-creative-cloud'
