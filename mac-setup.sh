@@ -179,6 +179,10 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
+# Disable Quarantine—"This app has been downloaded from the internet. Sure you want to open it?" nonsense.
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+
 # Restarts Finder
 killall Finder
 
