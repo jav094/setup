@@ -32,6 +32,28 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 
 
 ###############################################################################
+<<<<<<< HEAD
+=======
+# Audio                                                                      
+###############################################################################
+echo "Setting up audio"
+
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80 
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80 
+defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 80 
+defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editable)" 80 
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80 
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80 
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
+
+sudo killall bluetoothaudiod
+sudo killall coreaudiod
+
+
+
+
+###############################################################################
+>>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
 # Screen                                                                      
 ###############################################################################
 echo "Setting up screen"
@@ -45,6 +67,12 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+<<<<<<< HEAD
+=======
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+>>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
 
 
 
@@ -148,6 +176,10 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+# Disable Quarantine—"This app has been downloaded from the internet. Sure you want to open it?" nonsense.
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
 
 # Restarts Finder
 killall Finder
@@ -269,6 +301,7 @@ mas install 442168834
 
 # Xcode
 mas install 497799835
+<<<<<<< HEAD
 
 # Affinity Photo
 mas install 824183456
@@ -296,3 +329,5 @@ mas install 1496833156
 
 # Gaplin
 mas install 768053424
+=======
+>>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
