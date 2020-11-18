@@ -18,15 +18,6 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map bottom right corner to right-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Swipe between pages with two fingers
-defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
-
 # Disable “natural” scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
@@ -41,57 +32,18 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 
 
 ###############################################################################
-# Audio                                                                      
-###############################################################################
-echo "Setting up audio"
-
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80 
-defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80 
-defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
-
-sudo killall bluetoothaudiod
-sudo killall coreaudiod
-
-# Disable boot chime
-# This doesn't seem to work?
-# sudo nvram SystemAudioVolume=" "
-
-
-
-
-###############################################################################
 # Screen                                                                      
 ###############################################################################
 echo "Setting up screen"
 
 # Save screenshots to Dropbox folder
-defaults write com.apple.screencapture location -string "$HOME/Dropbox (Coastal)/MyDocs/screenshots/"
+defaults write com.apple.screencapture location -string "$HOME/Dropbox/Screenshots/"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
-
-# Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
-
-
-
-
-###############################################################################
-# Notification Center                                                         
-###############################################################################
-# echo "Disabling Notification Center"
-
-# Disable Notification Center
-# Can't disable while SIP is enabled
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && \
-# killall -9 NotificationCenter
 
 
 
@@ -165,14 +117,6 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# Automatically open a new Finder window when a volume is mounted
-defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
-
-# Set Sidebar Icon Size
-defaults write -g NSTableViewDefaultSizeMode -int 2
-
 # Show item info below icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
@@ -216,12 +160,6 @@ killall Finder
 ###############################################################################
 echo "Setting up Dock"
 
-# Show indicator lights for open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool true
-
-# Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
-
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
@@ -235,34 +173,11 @@ defaults write com.apple.Dock autohide-delay -float 0
 # Shorten the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 1.0
 
-# Enable the 2D Dock
-defaults write com.apple.dock no-glass -bool true
-
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Reset Launchpad
-find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
-
 # restarts Dock
 killall Dock
-
-
-
-
-###############################################################################
-# Input 
-###############################################################################
-echo "Setting up input preferences"
-
-# Turn on case-insensitive autocomplete in Terminal
-echo "set completion-ignore-case On" >> ~/.inputrc
-
-# Disable smart quotes
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 
 
@@ -298,6 +213,14 @@ xcode-select --install
 
 
 
+###############################################################################
+# Gatekeeper 
+###############################################################################
+# Turn off "app downloaded from internet" warnings
+# You may still have to go into Prefs > Security & Privacy > General > "Allow apps downloaded from:" and set it to "Anywhere"
+spctl --master-disable
+
+
 
 ###############################################################################
 # Homebrew 
@@ -327,7 +250,8 @@ brew install mas
 # Sign in
 mas signin --dialog jav094@gmail.com
 
-# Download & install apps:
+# Install apps:
+
 # Keynote
 mas install 409183694
 
@@ -337,11 +261,38 @@ mas install 409203825
 # Pages
 mas install 409201541
 
-# Simplenote
-mas install 692867256
+# GarageBand
+mas install 682658836
 
 # SiteSucker
 mas install 442168834
 
 # Xcode
 mas install 497799835
+
+# Affinity Photo
+mas install 824183456
+
+# Affinity Designer
+mas install 824171161
+
+# FB Messenger
+mas install 1480068668
+
+# Magnet
+mas install 441258766
+
+# Slack
+mas install 803453959
+
+# Boop
+mas install 1518425043
+
+# MindNode
+mas install 1289197285
+
+# Playgrounds
+mas install 1496833156
+
+# Gaplin
+mas install 768053424
