@@ -31,11 +31,7 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 
 
 
-###############################################################################
-<<<<<<< HEAD
-=======
 # Audio                                                                      
-###############################################################################
 echo "Setting up audio"
 
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80 
@@ -52,10 +48,7 @@ sudo killall coreaudiod
 
 
 
-###############################################################################
->>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
 # Screen                                                                      
-###############################################################################
 echo "Setting up screen"
 
 # Save screenshots to Dropbox folder
@@ -67,12 +60,9 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
-<<<<<<< HEAD
-=======
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
->>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
 
 
 
@@ -171,15 +161,11 @@ defaults write com.apple.Finder FXPreferredViewStyle -string "icnv"
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
-
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Disable Quarantine—"This app has been downloaded from the internet. Sure you want to open it?" nonsense.
 defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 
 # Restarts Finder
 killall Finder
@@ -191,13 +177,6 @@ killall Finder
 # Dock & hot corners                                                          
 ###############################################################################
 echo "Setting up Dock"
-
-# Don’t group windows by application in Mission Control
-# (i.e. use the old Exposé behavior instead)
-defaults write com.apple.dock expose-group-by-app -bool false
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.Dock autohide-delay -float 0
@@ -226,20 +205,10 @@ git config --global user.email "jav094@gmail.com"
 
 
 ###############################################################################
-# Xcode 
-###############################################################################
-echo "Setting up Xcode"
-
-xcode-select --install
-
-
-
-
-###############################################################################
 # iTunes 
 ###############################################################################
 # Stop Responding to Key Presses
-# Doesn't work while System Integrity Protection is on'
+# Doesn't work while System Integrity Protection is on
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
 
 
@@ -283,7 +252,6 @@ brew install mas
 mas signin --dialog jav094@gmail.com
 
 # Install apps:
-
 # Keynote
 mas install 409183694
 
@@ -296,13 +264,6 @@ mas install 409201541
 # GarageBand
 mas install 682658836
 
-# SiteSucker
-mas install 442168834
-
-# Xcode
-mas install 497799835
-<<<<<<< HEAD
-
 # Affinity Photo
 mas install 824183456
 
@@ -312,22 +273,5 @@ mas install 824171161
 # FB Messenger
 mas install 1480068668
 
-# Magnet
-mas install 441258766
-
-# Slack
-mas install 803453959
-
-# Boop
-mas install 1518425043
-
-# MindNode
-mas install 1289197285
-
-# Playgrounds
-mas install 1496833156
-
 # Gaplin
 mas install 768053424
-=======
->>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
