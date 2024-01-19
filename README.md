@@ -23,11 +23,4 @@ Sets a macOS machine up for a comfy dev environment
 * set up SSH keys
 * finish installing some Casks (they need to run proprietary installers deposited in usr/local/Caskroom)
 * install apps that don't have Casks:
-<<<<<<< HEAD
-    * Adobe stuff mainly
     * Davinci Resolve
-=======
-    * Adobe CC
-    * Framer X
-    * InVision Studio
->>>>>>> b84135c0522ad83779ea07b9d6d4db390a30f773
