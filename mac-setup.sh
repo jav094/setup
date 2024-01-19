@@ -31,23 +31,6 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 
 
 
-# Audio                                                                      
-echo "Setting up audio"
-
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editable)" 80 
-defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80 
-defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80 
-defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
-
-sudo killall bluetoothaudiod
-sudo killall coreaudiod
-
-
-
-
 # Screen                                                                      
 echo "Setting up screen"
 
@@ -229,7 +212,8 @@ spctl --master-disable
 echo "Setting up Homebrew apps"
 
 # Install Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install your apps from a predefined Brewfile
 brew bundle
